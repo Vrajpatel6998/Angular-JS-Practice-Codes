@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" href="task1.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+</head>
+
+<body>
+    <div ng-app="myapp" ng-controller="myctrl">
+        <p class="heder">
+            BANK APPLICATION
+        </p>
+        <p class="h1">
+            <span>Balance: {{ getBalance() }}</span>
+        </p>
+        <p class="h2">
+            <input style="width: 150px; border-radius: 5px; border-color:#b6b3ff; height: 25px;" type="text"
+                ng-model="newTransaction.amount" placeholder="Amount">
+            <input style="width: 250px; border-radius: 5px; border-color: #b6b3ff; height: 25px;" type="text"
+                ng-model="newTransaction.description" placeholder="Description">
+            <select style="width: 100px; border-radius: 5px; border-color:#b6b3ff; height: 30px;"
+                ng-model="newTransaction.type">
+                <option value="deposit">Deposit</option>
+                <option value="withdraw">Withdraw</option>
+            </select>
+            <button
+                style="border-radius: 5px; background-image: linear-gradient(to right, #a0b7ff, #b6b3ff, #cdadff); height: 25px; border-color:#a0b7ff;"
+                ng-click="addTransaction()">Submit</button>
+            <hr>
+        </p>
+        <center>
+            <table class="h3">
+                <tr>
+                    <th style="color: #71c4bf;">DEPOSIT</th>
+                    <th style="color: #cf002f;">WITHDRAW</th>
+                </tr>
+                <tr ng-repeat="item in transactionList">
+                    <td ng-if="item.type === 'deposit'">{{ item.amount | number:2 }} - {{ item.description }}</td>
+                    <td></td>
+                </tr>
+                <tr ng-repeat="item in transactionList">
+                    <td></td>
+                    <td ng-if="item.type === 'withdraw'">{{ item.amount | number:2 }} - {{ item.description }}</td>
+                </tr>
+            </table>
+        </center>
+    </div>
+
+    <script>
+        var app = angular.module('myapp', []);
+        app.controller('myctrl', function ($scope) {
+            $scope.transactionList = [];
+
+            $scope.addTransaction = function () {
+                if ($scope.newTransaction.amount && $scope.newTransaction.description && $scope.newTransaction.type) {
+                    var amount = parseFloat($scope.newTransaction.amount);
+                    if ($scope.newTransaction.type === 'withdraw' && amount > $scope.getBalance()) {
+                    } else {
+                        $scope.transactionList.push({
+                            amount: amount,
+                            description: $scope.newTransaction.description,
+                            type: $scope.newTransaction.type
+                        });
+                        $scope.newTransaction = {};
+                    }
+                }
+            };
+
+            $scope.getTotalDeposits = function () {
+                return $scope.transactionList.reduce(function (total, item) {
+                    if (item.type === 'deposit') {
+                        total += item.amount;
+                    }
+                    return total;
+                }, 0);
+            };
+
+            $scope.getTotalWithdrawals = function () {
+                return $scope.transactionList.reduce(function (total, item) {
+                    if (item.type === 'withdraw') {
+                        total += item.amount;
+                    }
+                    return total;
+                }, 0);
+            };
+
+            $scope.getBalance = function () {
+                return $scope.getTotalDeposits() - $scope.getTotalWithdrawals();
+            };
+        });
+    </script>
+</body>
+
+</html>

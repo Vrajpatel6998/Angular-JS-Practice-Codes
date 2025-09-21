@@ -1,0 +1,22 @@
+<html>
+
+<head>
+    <title></title>
+    <style></style>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+</head>
+
+<body>
+    <div ng-app="myapp" ng-controller="personCtrl">
+        <p>The Last Name is {{lastname |uppercase}}</p>
+        <p The name is: ng-bind="firstname |lowercase"></p>
+    </div>
+    <script>
+        angular.module('myapp', []).controller('personCtrl', function ($scope) {
+            $scope.firstname = 'APTECH',
+                $scope.lastname = 'learning'
+        });
+    </script>
+</body>
+
+</html>

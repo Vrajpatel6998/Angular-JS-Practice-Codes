@@ -1,0 +1,24 @@
+<html>
+<head>
+<title></title>
+<style></style>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+</head>
+<body>
+    <div ng-app="myapp" ng-controller="myctrl">
+        <p>Select a car : </p>
+        <select ng-model="selectedcar" ng-options="x for (x, y) in cars"></select>
+        <h1>{{selectedcar}}</h1>
+    </div>
+    <script>
+        var app = angular.module('myapp',[]);
+        app.controller('myctrl',function ($scope){
+            $scope.cars = {
+                car001: "BMW",
+                car002: "JAGUAR",
+                car003: "VOLVO"
+            }
+        });
+    </script>
+</body>
+</html>

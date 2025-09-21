@@ -1,0 +1,16 @@
+<html>
+<head>
+<title></title>
+<style></style>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+</head>
+<body ng-app="">
+    <p>Do you want to hide the list of cities?</p>
+    <input type="checkbox" ng-model="myvar">
+    <ul ng-hide="myvar">
+        <li>Ahmedabad</li>
+        <li>Surat</li>
+        <li>Vadodara</li>
+    </ul>
+</body>
+</html>

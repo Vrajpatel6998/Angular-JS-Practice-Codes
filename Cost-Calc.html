@@ -1,0 +1,17 @@
+<html>
+<head>
+<title></title>
+<style></style>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+</head>
+<body>
+    <div ng-app="">
+        <h1>Cost calculation</h1>
+        <p>Quantity: <input type="number" ng-model="quantity"></p>
+        <p>Price: <input type="number" ng-model="price"></p>
+        <p ng-bind="quantity"></p>
+        <p ng-bind="price"></p>
+        <p ng-bind="quantity*price"></p>
+    </div>
+</body>
+</html>

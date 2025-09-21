@@ -1,0 +1,28 @@
+<html>
+<head>
+<title></title>
+<style></style>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+</head>
+<body>
+    <div ng-app="myapp" ng-controller="myctrl">
+        Number : <input type="number" ng-model="number" id="number" ng-keydown="checknumber()"><br><br>
+        <!-- <button ng-click="checknumber()">Click me</button> -->
+        <h2>Number : {{number}}</h2>
+    </div>
+</body>
+<script>
+    var app = angular.module('myapp',[]);
+    app.controller('myctrl',function($scope)
+{
+    $scope.checknumber = function() {
+        if (number % 2 == 0) {
+            $scope.number += 2;
+        }
+        else {
+            $scope.number += 2;
+        }
+    }
+});
+</script>
+</html>

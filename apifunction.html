@@ -1,0 +1,49 @@
+<html>
+<head>
+<title></title>
+<style></style>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+</head>
+<body>
+    <div ng-app="myapp" ng-controller="myctrl">
+        <p>{{ x1 }}</p>
+        <p>{{ x2 }}</p>
+        <p>{{ x3 }}</p>
+        <p>{{ x4 }}</p>
+        <p>{{ x5 }}</p>
+        <p>{{ x6 }}</p>
+        <p>{{ x7 }}</p>
+        <p>{{ x8 }}</p>
+        <p>{{ x9 }}</p>
+        <p>{{ x10 }}</p>
+
+    </div>
+    <script>
+        var app = angular.module('myapp',[]);
+        app.controller('myctrl',function($scope)
+        {
+            $scope.x1 = "APTECH";
+
+            $scope.x2 = angular.lowercase($scope.x1);
+
+            $scope.x3 = "aptch";
+
+            $scope.x4 = angular.uppercase($scope.x3);
+
+            $scope.x5 = "learning";
+
+            $scope.x6 = angular.isString($scope.x5);
+
+            $scope.x7 = angular.isNumber($scope.x5);
+
+            $scope.x8 = 123;
+
+            $scope.x9 = angular.isString($scope.x8);
+
+            $scope.x10 = angular.isNumber($scope.x8);
+
+        }
+    )
+    </script>
+</body>
+</html>
